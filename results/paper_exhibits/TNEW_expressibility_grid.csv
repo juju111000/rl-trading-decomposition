@@ -1,0 +1,7 @@
+size / asset,effective size (post clip + cap),execution,net return %,gross P&L % (held),cost / NAV %,max DD %,trades / decision day,band-blocked share,mean gross exposure
+0.2,0.2,canonical,-2.0,-1.0,0.4,7.2,0.08,0.983,0.14
+0.2,0.2,no smoothing,"+1,480.3","+2,244.5",42.9,2.7,2.61,0.478,0.98
+0.4,0.4,canonical,+7.2,+9.7,2.4,9.2,0.46,0.909,0.34
+0.4,0.4,no smoothing,"+22,306.0","+44,452.2",85.0,5.3,2.66,0.468,1.91
+0.8,0.4,canonical,+7.3,+9.7,2.3,9.2,0.44,0.913,0.34
+0.8,0.4,no smoothing,"+22,332.6","+44,585.3",85.3,5.3,2.69,0.463,1.91

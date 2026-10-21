@@ -412,6 +412,16 @@ def load_and_prepare_data(
 # Environment Creation
 # =============================================================================
 
+def calibrate_regime(config: Config, train_aligned: pd.DataFrame) -> Config:
+    """Calibrate the regime model's volatility thresholds on TRAINING data and
+    record them in config.regime.calibrated_vol_thresholds (audit defect #9).
+    For paths that build only a test env (untrained arm, re-evaluating a saved
+    checkpoint whose config predates the fix). Consumes no random numbers."""
+    model = create_regime_model(config.regime, input_dim=1)
+    model.fit(train_aligned, mode="train")
+    return config
+
+
 def create_trading_env(
         features: pd.DataFrame,
         prices: Dict[str, np.ndarray],
@@ -448,7 +458,7 @@ def create_trading_env(
 
     # Fit regime model on OHLCV data if provided
     if aligned_data is not None:
-        regime_model.fit(aligned_data)
+        regime_model.fit(aligned_data, mode=mode)
 
     # Create shield
     shield = create_shield(

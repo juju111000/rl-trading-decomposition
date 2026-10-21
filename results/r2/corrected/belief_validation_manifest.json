@@ -1,0 +1,114 @@
+{
+  "experiment": "E3 belief validation + fixed-policy gating comparison",
+  "script": "r2_belief_validation.py",
+  "proxy_definition": "EW 5-asset index; Bear: trail60<-10% or DD>15%; Bull: trail60>+10% and DD<5%; else Sideways",
+  "operators": [
+    "hysteresis",
+    "softmax"
+  ],
+  "checkpoints_part_b": [
+    {
+      "seed": 1,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed1\\final_model.pt",
+      "sha256": "9b7f85fc33829e60f468482af8d533a2cdcf8caa4f7a3520a72f89dcd8f912d6"
+    },
+    {
+      "seed": 2,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed2\\final_model.pt",
+      "sha256": "89d6dee6895f56ca31cc0a4bc631e1daebea0008f005766f91655ddfd0ed0db4"
+    },
+    {
+      "seed": 3,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed3\\final_model.pt",
+      "sha256": "33f3277e3484735aeb68f74f64182ed25d2610bea15345f3ab634b4587a50dd8"
+    },
+    {
+      "seed": 4,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed4\\final_model.pt",
+      "sha256": "5842b9df36e549f1a9fb841d3387337bbe3b9b7a0c1d9d2558628736585dd830"
+    },
+    {
+      "seed": 5,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed5\\final_model.pt",
+      "sha256": "5360ac2c40074d039f6f71dc799955a8aafc4519ef033150fb2758e932dfa62e"
+    },
+    {
+      "seed": 6,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed6\\final_model.pt",
+      "sha256": "89b4b19b4e98fc072ec2dd84840fc77aa6826cc240cabf5141de434b86274581"
+    },
+    {
+      "seed": 7,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed7\\final_model.pt",
+      "sha256": "fb091faeee052297f0b41694a265c7496b6a8482cebe413be6405d04bc76f858"
+    },
+    {
+      "seed": 8,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed8\\final_model.pt",
+      "sha256": "cb944024c35f5b348740a5db8980e66a35cec7d8eb8bda4ad150ddd74b1e04fd"
+    },
+    {
+      "seed": 9,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed9\\final_model.pt",
+      "sha256": "9fdcc5ea13dc3e7d7c335340e12100d18e6166054976424418a31879c1c529dc"
+    },
+    {
+      "seed": 10,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed10\\final_model.pt",
+      "sha256": "2d0c77c77129b7478507e4b2c12cb520c27eadd4d26d058c5aa6bb14f859c383"
+    },
+    {
+      "seed": 11,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed11\\final_model.pt",
+      "sha256": "cb6a394f330dc310f3d69551d3ddab764ae57278c5491219cccb63ed20952085"
+    },
+    {
+      "seed": 12,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed12\\final_model.pt",
+      "sha256": "ab0b8e9c188927240e330565623a9b3b7353e5804385724712dc07d8977cdc0c"
+    },
+    {
+      "seed": 13,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed13\\final_model.pt",
+      "sha256": "e9905e0cb28b432fb3f0f9a49d621c2f39b1092733fba913ab07bb5c5a42afbb"
+    },
+    {
+      "seed": 14,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed14\\final_model.pt",
+      "sha256": "cb553c0cf633c98f2eb220d91b0ec66e8589c311bb836fea36c4c00c28aeea27"
+    },
+    {
+      "seed": 15,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed15\\final_model.pt",
+      "sha256": "9f575c653dd59caae3e8f1f21ceb0aec110c5f15d1cbb061290733e14260de8b"
+    },
+    {
+      "seed": 16,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed16\\final_model.pt",
+      "sha256": "513ae37cb0c8e68f8528157b59432505833dcdba3c2b249ff4038258521872a6"
+    },
+    {
+      "seed": 17,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed17\\final_model.pt",
+      "sha256": "2599865740bd8ab013c3407b31f3bfc9ebb0667f423de847b344d4989e3d6945"
+    },
+    {
+      "seed": 18,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed18\\final_model.pt",
+      "sha256": "c31904244d369071298b07c03867a088b6c7d9f8dcb526a127f8487d02144d3b"
+    },
+    {
+      "seed": 19,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed19\\final_model.pt",
+      "sha256": "28df3603ba07a3f87420afa1b4afd29850c44bb789e257e9e7147fac32b92d5a"
+    },
+    {
+      "seed": 20,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed20\\final_model.pt",
+      "sha256": "cff51d07350abb471e8a4079ac3711390c9de4efc97af16f867f8f7875bf4f18"
+    }
+  ],
+  "runtime_seconds": 48.3,
+  "fold4_loaded": false,
+  "generated_utc": "2026-10-16T11:25:52.952390+00:00"
+}

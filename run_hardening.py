@@ -162,6 +162,8 @@ def _build_oracle_slices(config, accuracy: float):
 
 
 def _eval_existing(arm_config, model_path, slices) -> dict:
+    if getattr(arm_config.regime, "calibrated_vol_thresholds", None) is None:   # audit defect #9
+        main_module.calibrate_regime(arm_config, slices['train_aligned'])
     test_env = build_env_with_features(slices['test_features'], slices['test_prices'], arm_config,
                                         slices['test_aligned'], mode="test")
     policy = load_saved_policy(model_path, test_env.observation_space.shape[0], len(slices['tickers']), arm_config)
@@ -186,6 +188,9 @@ def process_untrained(output_root: Path, seed: int) -> dict:
 
     config = _base_config(seed)
     slices = _load_fold2_slices(config)
+    # audit defect #9: regime thresholds from the TRAINING slice (consumes no
+    # RNG, so the seed_everything -> network-creation pairing is unchanged)
+    main_module.calibrate_regime(config, slices['train_aligned'])
     seed_everything(seed)
     test_env = build_env_with_features(slices['test_features'], slices['test_prices'], config,
                                         slices['test_aligned'], mode="test")

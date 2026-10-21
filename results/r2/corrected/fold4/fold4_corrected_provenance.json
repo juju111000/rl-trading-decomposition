@@ -1,0 +1,33 @@
+{
+  "run_utc": "2026-10-16T22:39:34.653744+00:00",
+  "git_head": "d5c13b9fd5e3c87463612fce01793a06de59ee69",
+  "data_cache": "data_cache\\raw_data_2020-11-22_2025-12-31_000001.SS-CLF-DJI-GDAXI-GSPC.pkl",
+  "data_cache_sha256": "9c5c003576bbf3b4ccb464cee2604713b44d5af8723a1140b9df4a6b04a3cac3",
+  "test_window": [
+    "2024-01-02",
+    "2025-12-30",
+    520
+  ],
+  "train_window_for_regime_calibration": [
+    "2021-01-18",
+    "2023-12-29"
+  ],
+  "calibrated_vol_thresholds": [
+    0.12022835545346831,
+    0.1809283218321056
+  ],
+  "checkpoint_sha256": {
+    "results\\fold4\\grid\\seed_1\\fold_1\\none\\ppo_lagrangian\\final_model.pt": "ce4ac9438120cde29db21f3eeafd0b71fca3003cec0671e982e80c58efb78079",
+    "results\\fold4\\grid\\seed_2\\fold_1\\none\\ppo_lagrangian\\final_model.pt": "05132d15031d8ee7d48f67ae09177a02e2e59e84430b992224e0c96b1ab2b51c",
+    "results\\fold4\\grid\\seed_3\\fold_1\\none\\ppo_lagrangian\\final_model.pt": "b27192c98896a59175b1e67cd71530a466ea862d64177e85419bb009023fec2f",
+    "results\\fold4\\grid\\seed_4\\fold_1\\none\\ppo_lagrangian\\final_model.pt": "5766270f08a8452bfa54181d3c17f3a64bf572d4b3d5328552323de0e8974ae7",
+    "results\\fold4\\grid\\seed_5\\fold_1\\none\\ppo_lagrangian\\final_model.pt": "bf50c1612b22ae4ab5bb1005ecef3c5490f81b3073e86f6a7dd1ceb56ebbcbed",
+    "results\\fold4\\grid\\seed_1\\fold_1\\uncertainty_aware\\ppo_lagrangian\\final_model.pt": "18125a0cf7aab33fa0554069a81841e28487af5e05c6fd3973881c2e480104b8",
+    "results\\fold4\\grid\\seed_2\\fold_1\\uncertainty_aware\\ppo_lagrangian\\final_model.pt": "c22a7720c9cfc0fc8093d912fe20f09cb32b6721a3d64ed32dc72b5a8f2248dd",
+    "results\\fold4\\grid\\seed_3\\fold_1\\uncertainty_aware\\ppo_lagrangian\\final_model.pt": "10c36990156cae891aa687c3ab2dd28d98c23c179d1141612ca3eeea1e10e8ef",
+    "results\\fold4\\grid\\seed_4\\fold_1\\uncertainty_aware\\ppo_lagrangian\\final_model.pt": "0e49f63e5c19d2baa45a84199893269e5f45190014168398afd9b757021930f4",
+    "results\\fold4\\grid\\seed_5\\fold_1\\uncertainty_aware\\ppo_lagrangian\\final_model.pt": "54a30a391ef2b0f3d9c59c76f54b8068850db4c9b536686df4ded5c0e0fd40db"
+  },
+  "retraining": false,
+  "one_pass": true
+}

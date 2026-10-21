@@ -28,7 +28,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from config import Config
 from data_loader import DataLoader
-from regime_model import create_regime_model
+from regime_model import RegimeCalibrationError, create_regime_model
 from policy_shield import create_shield
 from trading_env import TradingCMDPEnv
 from networks import create_actor_critic, ActorCritic
@@ -146,8 +146,10 @@ def create_test_env(features: pd.DataFrame, prices: Dict[str, np.ndarray],
 
     regime_model = create_regime_model(config.regime, input_dim=features.shape[1])
     try:
-        regime_model.fit(ohlcv_data)
-    except:
+        regime_model.fit(ohlcv_data, mode="test")
+    except RegimeCalibrationError:
+        raise  # audit defect #9: never fall back to thresholds computed on, or guessed for, test data
+    except Exception:
         if hasattr(regime_model, '_vol_thresholds'):
             regime_model._vol_thresholds = (0.15, 0.25)
 

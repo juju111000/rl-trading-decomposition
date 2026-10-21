@@ -144,7 +144,7 @@ def build_env_with_features(features_array: np.ndarray, prices: Dict[str, np.nda
 
     regime_model = create_regime_model(config.regime, input_dim=features_array.shape[1])
     if aligned_data is not None:
-        regime_model.fit(aligned_data)
+        regime_model.fit(aligned_data, mode=mode)
 
     shield = create_shield(config.shield, config.constraints, n_assets=len(config.data.tickers))
 

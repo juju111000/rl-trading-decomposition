@@ -96,6 +96,13 @@ class RegimeConfig:
     belief_formation: BeliefFormationType = BeliefFormationType.HARD_EMA_HYSTERESIS
     softmax_temperature: float = 1.0  # (A) softmax(scores / T); T=1.0 == original behavior; unused by the canonical C default
     hysteresis_days: int = 3  # (C) consecutive days the argmax must persist before a hard regime flip commits
+    # Audit defect #9 (regime look-ahead): volatility-percentile thresholds are
+    # calibrated ONLY by a training-mode fit (HeuristicRegimeModel.fit(data,
+    # mode="train")), which records them here so they travel with the config
+    # (and every saved checkpoint's config.json). Any non-training fit uses
+    # these frozen values and raises RegimeCalibrationError if they are absent
+    # -- test-window data can never set or alter them.
+    calibrated_vol_thresholds: Optional[List[float]] = None
 
 
 @dataclass

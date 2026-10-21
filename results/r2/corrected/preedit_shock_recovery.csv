@@ -1,0 +1,13 @@
+shock,shock_date,slice,thresholds,operator,regime_before_shock,first_flip,shock_to_flip_days,A_flip_to_H<0.7_days,A_flip_to_H<0.5_days,B_first_run_H>0.7_days,B_first_run_start,B_days_H>0.7_in_60d,max_entropy_60d
+2008,2008-09-15,fold 1 test,new (D9: train-window thresholds),hysteresis,2,2008-09-17,2,0,11.0,0,,0,0.6308971428211985
+2008,2008-09-15,fold 1 test,new (D9: train-window thresholds),softmax,2,2008-09-19,4,11,17.0,15,2008-09-15,15,0.938004153495186
+2008,2008-09-15,fold 1 test,old (pre-D9: fit on evaluated slice),hysteresis,2,2008-09-30,11,0,0.0,0,,0,0.6300719983843103
+2008,2008-09-15,fold 1 test,old (pre-D9: fit on evaluated slice),softmax,2,2008-10-06,15,11,17.0,26,2008-09-15,26,0.9243308053055429
+2011,2011-08-08,fold 2 train,new (D9: train-window thresholds),hysteresis,2,2011-08-10,2,0,0.0,0,,0,0.6300719961547954
+2011,2011-08-08,fold 2 train,new (D9: train-window thresholds),softmax,2,2011-08-15,5,11,,16,2011-08-08,51,0.9365170525352751
+2011,2011-08-08,fold 2 train,old (pre-D9: fit on evaluated slice),hysteresis,2,2011-08-10,2,0,0.0,0,,0,0.6300719961547954
+2011,2011-08-08,fold 2 train,old (pre-D9: fit on evaluated slice),softmax,2,2011-08-15,5,11,,16,2011-08-08,51,0.9365170525352751
+2020,2020-02-19,fold 3 test,new (D9: train-window thresholds),hysteresis,2,2020-03-02,8,0,0.0,0,,0,0.6419465049575113
+2020,2020-02-19,fold 3 test,new (D9: train-window thresholds),softmax,2,2020-03-06,12,8,13.0,20,2020-02-19,21,0.9306644641475975
+2020,2020-02-19,fold 3 test,old (pre-D9: fit on evaluated slice),hysteresis,2,2020-03-11,15,0,0.0,0,,0,0.6360302153575139
+2020,2020-02-19,fold 3 test,old (pre-D9: fit on evaluated slice),softmax,2,2020-03-16,18,8,13.0,26,2020-02-19,35,0.9303310700075527

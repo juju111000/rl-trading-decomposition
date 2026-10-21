@@ -12,6 +12,10 @@ from scipy.special import softmax
 from config import RegimeConfig, RegimeModelType, BeliefFormationType
 
 
+class RegimeCalibrationError(RuntimeError):
+    """A non-training fit was asked to run without frozen training calibration."""
+
+
 class RegimeModel(ABC):
     """
     Abstract base class for regime inference models.
@@ -24,8 +28,9 @@ class RegimeModel(ABC):
         self._current_belief: Optional[np.ndarray] = None
 
     @abstractmethod
-    def fit(self, data: pd.DataFrame) -> None:
-        """Fit the regime model to historical data."""
+    def fit(self, data: pd.DataFrame, mode: str = "train") -> None:
+        """Fit the regime model to historical data. mode="train" may calibrate
+        parameters from `data`; any other mode must not (see RegimeCalibrationError)."""
         pass
 
     @abstractmethod
@@ -114,10 +119,15 @@ class HeuristicRegimeModel(RegimeModel):
         self._pending_count: int = 0
         self.reset()
 
-    def fit(self, data: pd.DataFrame) -> None:
+    def fit(self, data: pd.DataFrame, mode: str = "train") -> None:
         """
-        Fit volatility thresholds from historical data, and seed the
-        close-price history used for the SMA crossover trend signal.
+        mode="train": calibrate the volatility thresholds from `data` (the
+        TRAINING slice) and record them in config.calibrated_vol_thresholds.
+        Any other mode (test/validation): use the frozen training thresholds
+        from config.calibrated_vol_thresholds and never compute anything from
+        `data` -- raises RegimeCalibrationError if none were recorded
+        (audit defect #9: previously test envs re-fit the thresholds on the
+        test window, a look-ahead in calibration).
         Uses first ticker (in config-declared order) as market proxy.
         """
         # Preserve column order (first occurrence) rather than set()'s
@@ -125,13 +135,27 @@ class HeuristicRegimeModel(RegimeModel):
         # primary / benchmark asset, so it must match the config-declared order.
         tickers = list(dict.fromkeys(col[0] for col in data.columns))
         self._market_ticker = tickers[0]
-        close = data[(self._market_ticker, 'Close')]
 
+        if mode != "train":
+            # No values from `data` are read in a non-training fit (only its
+            # column layout, above). The price buffer starts empty; env.reset()
+            # warms it up from the episode's own past, as it always has.
+            self._close_history = []
+            frozen = getattr(self.config, 'calibrated_vol_thresholds', None)
+            if frozen is None:
+                raise RegimeCalibrationError(
+                    f"HeuristicRegimeModel.fit(mode={mode!r}) without training-calibrated thresholds: "
+                    "fit a training-mode model first (or main.calibrate_regime(config, train_aligned)).")
+            self._vol_thresholds = (float(frozen[0]), float(frozen[1]))
+            print(f"HeuristicRegimeModel ({mode}): frozen training vol thresholds {self._vol_thresholds}")
+            return
+
+        close = data[(self._market_ticker, 'Close')]
         # Seed the rolling close-price buffer so update() has a full
         # SMA(trend_ma_slow) window available as soon as fit() has run.
         self._close_history = close.tail(self._trend_ma_slow).tolist()
 
-        # Compute historical volatility
+        # Compute historical volatility (TRAINING data only)
         returns = np.log(close / close.shift(1)).dropna()
         rolling_vol = returns.rolling(20).std() * np.sqrt(252)
         rolling_vol = rolling_vol.dropna()
@@ -139,11 +163,12 @@ class HeuristicRegimeModel(RegimeModel):
         # Set volatility thresholds based on percentiles
         low_pct, high_pct = self.config.vol_percentile_thresholds
         self._vol_thresholds = (
-            rolling_vol.quantile(low_pct),
-            rolling_vol.quantile(high_pct)
+            float(rolling_vol.quantile(low_pct)),
+            float(rolling_vol.quantile(high_pct))
         )
+        self.config.calibrated_vol_thresholds = list(self._vol_thresholds)
 
-        print(f"HeuristicRegimeModel fitted:")
+        print(f"HeuristicRegimeModel fitted (train):")
         print(f"  Vol thresholds: {self._vol_thresholds}")
 
     def update(
@@ -340,7 +365,7 @@ class HMMRegimeModel(RegimeModel):
         self._observation_buffer: List[np.ndarray] = []
         self.reset()
 
-    def fit(self, data: pd.DataFrame) -> None:
+    def fit(self, data: pd.DataFrame, mode: str = "train") -> None:
         """Fit HMM on historical returns and volatility."""
         try:
             from hmmlearn import hmm
@@ -463,7 +488,7 @@ class LearnedRegimeModel(RegimeModel):
 
         self._model = RegimeNetwork(self.input_dim, self.n_regimes)
 
-    def fit(self, data: pd.DataFrame) -> None:
+    def fit(self, data: pd.DataFrame, mode: str = "train") -> None:
         """
         Fit using unsupervised clustering or semi-supervised learning.
         For simplicity, we use K-means on features to get pseudo-labels.

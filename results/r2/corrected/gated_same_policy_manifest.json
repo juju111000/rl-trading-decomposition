@@ -1,0 +1,303 @@
+{
+  "experiment": "E2 same-policy shield modes (eval only)",
+  "script": "r2_gated_same_policy.py",
+  "modes": [
+    "off",
+    "always_on",
+    "gated",
+    "hybrid"
+  ],
+  "gate": {
+    "p_bear_gt": 0.7,
+    "entropy_norm_gt": 0.5
+  },
+  "sensitivity_settings": [
+    [
+      0.15,
+      0.25
+    ],
+    [
+      0.2,
+      0.3
+    ],
+    [
+      0.25,
+      0.35
+    ]
+  ],
+  "checkpoints": [
+    {
+      "fold": 2,
+      "seed": 1,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed1\\final_model.pt",
+      "sha256": "9b7f85fc33829e60f468482af8d533a2cdcf8caa4f7a3520a72f89dcd8f912d6",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 2,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed2\\final_model.pt",
+      "sha256": "89d6dee6895f56ca31cc0a4bc631e1daebea0008f005766f91655ddfd0ed0db4",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 3,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed3\\final_model.pt",
+      "sha256": "33f3277e3484735aeb68f74f64182ed25d2610bea15345f3ab634b4587a50dd8",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 4,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed4\\final_model.pt",
+      "sha256": "5842b9df36e549f1a9fb841d3387337bbe3b9b7a0c1d9d2558628736585dd830",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 5,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed5\\final_model.pt",
+      "sha256": "5360ac2c40074d039f6f71dc799955a8aafc4519ef033150fb2758e932dfa62e",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 6,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed6\\final_model.pt",
+      "sha256": "89b4b19b4e98fc072ec2dd84840fc77aa6826cc240cabf5141de434b86274581",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 7,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed7\\final_model.pt",
+      "sha256": "fb091faeee052297f0b41694a265c7496b6a8482cebe413be6405d04bc76f858",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 8,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed8\\final_model.pt",
+      "sha256": "cb944024c35f5b348740a5db8980e66a35cec7d8eb8bda4ad150ddd74b1e04fd",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 9,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed9\\final_model.pt",
+      "sha256": "9fdcc5ea13dc3e7d7c335340e12100d18e6166054976424418a31879c1c529dc",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 10,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed10\\final_model.pt",
+      "sha256": "2d0c77c77129b7478507e4b2c12cb520c27eadd4d26d058c5aa6bb14f859c383",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 11,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed11\\final_model.pt",
+      "sha256": "cb6a394f330dc310f3d69551d3ddab764ae57278c5491219cccb63ed20952085",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 12,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed12\\final_model.pt",
+      "sha256": "ab0b8e9c188927240e330565623a9b3b7353e5804385724712dc07d8977cdc0c",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 13,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed13\\final_model.pt",
+      "sha256": "e9905e0cb28b432fb3f0f9a49d621c2f39b1092733fba913ab07bb5c5a42afbb",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 14,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed14\\final_model.pt",
+      "sha256": "cb553c0cf633c98f2eb220d91b0ec66e8589c311bb836fea36c4c00c28aeea27",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 15,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed15\\final_model.pt",
+      "sha256": "9f575c653dd59caae3e8f1f21ceb0aec110c5f15d1cbb061290733e14260de8b",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 16,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed16\\final_model.pt",
+      "sha256": "513ae37cb0c8e68f8528157b59432505833dcdba3c2b249ff4038258521872a6",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 17,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed17\\final_model.pt",
+      "sha256": "2599865740bd8ab013c3407b31f3bfc9ebb0667f423de847b344d4989e3d6945",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 18,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed18\\final_model.pt",
+      "sha256": "c31904244d369071298b07c03867a088b6c7d9f8dcb526a127f8487d02144d3b",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 19,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed19\\final_model.pt",
+      "sha256": "28df3603ba07a3f87420afa1b4afd29850c44bb789e257e9e7147fac32b92d5a",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 2,
+      "seed": 20,
+      "checkpoint": "results\\r2\\corrected\\hardening\\canonical_training\\canonical_seed20\\final_model.pt",
+      "sha256": "cff51d07350abb471e8a4079ac3711390c9de4efc97af16f867f8f7875bf4f18",
+      "data_range": [
+        "2009-11-22",
+        "2017-12-31"
+      ]
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "checkpoint": "results\\r2\\corrected\\grid\\seed_1\\fold_1\\none\\ppo_lagrangian\\final_model.pt",
+      "sha256": "86abbd552d397144bcfd6887c967c4f272f7ef70026a6f6faaa3130b1b401f13",
+      "post_hoc": true
+    },
+    {
+      "fold": 1,
+      "seed": 2,
+      "checkpoint": "results\\r2\\corrected\\grid\\seed_2\\fold_1\\none\\ppo_lagrangian\\final_model.pt",
+      "sha256": "97fac542f3a4291adcd952da52b34044213ca8bac9f1bb3bf860519f6966c391",
+      "post_hoc": true
+    },
+    {
+      "fold": 1,
+      "seed": 3,
+      "checkpoint": "results\\r2\\corrected\\grid\\seed_3\\fold_1\\none\\ppo_lagrangian\\final_model.pt",
+      "sha256": "fc9e192507f3438d7e5200135b6a9b32af46b14683d9b33988b865a3165b8c70",
+      "post_hoc": true
+    },
+    {
+      "fold": 1,
+      "seed": 4,
+      "checkpoint": "results\\r2\\corrected\\grid\\seed_4\\fold_1\\none\\ppo_lagrangian\\final_model.pt",
+      "sha256": "9bf22ad9d4b2529a46a8595c30661cfc78039ef45b05b8344b5553d797bc97ee",
+      "post_hoc": true
+    },
+    {
+      "fold": 1,
+      "seed": 5,
+      "checkpoint": "results\\r2\\corrected\\grid\\seed_5\\fold_1\\none\\ppo_lagrangian\\final_model.pt",
+      "sha256": "4f4e53382e6757ddfb2ef07652a5e0e216ab555596ee9cc87bc6dc300c5b3c16",
+      "post_hoc": true
+    },
+    {
+      "fold": 3,
+      "seed": 1,
+      "checkpoint": "results\\r2\\corrected\\grid\\seed_1\\fold_3\\none\\ppo_lagrangian\\final_model.pt",
+      "sha256": "01e36a9593c1365a6e59230952be50d782f10fd76554027cbe4bf28fe8085019",
+      "post_hoc": true
+    },
+    {
+      "fold": 3,
+      "seed": 2,
+      "checkpoint": "results\\r2\\corrected\\grid\\seed_2\\fold_3\\none\\ppo_lagrangian\\final_model.pt",
+      "sha256": "2e7166e16cb50130cf61494053ccab7618540ea0846bdc071c533ed410b6231e",
+      "post_hoc": true
+    },
+    {
+      "fold": 3,
+      "seed": 3,
+      "checkpoint": "results\\r2\\corrected\\grid\\seed_3\\fold_3\\none\\ppo_lagrangian\\final_model.pt",
+      "sha256": "65aa9d2c8f1a638d1407ca69d1efefde42e21f52b94d37016b9c7f62c4905ae3",
+      "post_hoc": true
+    },
+    {
+      "fold": 3,
+      "seed": 4,
+      "checkpoint": "results\\r2\\corrected\\grid\\seed_4\\fold_3\\none\\ppo_lagrangian\\final_model.pt",
+      "sha256": "521f94e08b1ceb7195e47f23563c9530dd348316a939f781507f5243b13c7c79",
+      "post_hoc": true
+    },
+    {
+      "fold": 3,
+      "seed": 5,
+      "checkpoint": "results\\r2\\corrected\\grid\\seed_5\\fold_3\\none\\ppo_lagrangian\\final_model.pt",
+      "sha256": "cc915a5118dabc1be39c2b4a1ed4960c152cc6f09b38fb8af8553f05a68372ab",
+      "post_hoc": true
+    }
+  ],
+  "runtime_seconds": 207.7,
+  "fold4_loaded": false,
+  "generated_utc": "2026-10-16T11:25:02.551914+00:00"
+}

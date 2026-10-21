@@ -35,7 +35,10 @@ import main as main_module
 from config import BeliefFormationType
 from run_rc_overlay_forensics import _load_dev_data, _fold_slices
 
-OUTPUT_PATH = Path("./results/figures/entropy_shock_2020.png")
+# Corrected figure set (audit defect #9): thresholds calibrated on fold 3's TRAINING window
+# (2017-2019) and frozen for the test window. The pre-D9 version (thresholds fit on the test
+# window) remains at results/figures/entropy_shock_2020.png for the record.
+OUTPUT_PATH = Path("./results/figures/corrected/entropy_shock_2020.png")
 FOLD_IDX = 2  # fold 3 (0-indexed): test window 2020-01-01..2023-12-31
 PRICE_PEAK = pd.Timestamp("2020-02-19")
 PLOT_START, PLOT_END = pd.Timestamp("2020-01-01"), pd.Timestamp("2020-06-30")
@@ -171,6 +174,10 @@ def main():
         split, features, prices, aligned_data, tickers
     )
     print(f"Fold 3 test window: {window_label}")
+    base_config = copy.deepcopy(base_config)
+    base_config.regime.calibrated_vol_thresholds = None
+    main_module.calibrate_regime(base_config, aligned_data.iloc[split['train'][0]:split['train'][1]])
+    print(f"D9 thresholds (fold-3 train window): {base_config.regime.calibrated_vol_thresholds}")
 
     series = {}
     regime_series = None

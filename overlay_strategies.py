@@ -85,7 +85,7 @@ def build_env_with_shield(features_df, prices, config, aligned_data, mode: str, 
 
     regime_model = create_regime_model(config.regime, input_dim=features_df.shape[1])
     if aligned_data is not None:
-        regime_model.fit(aligned_data)
+        regime_model.fit(aligned_data, mode=mode)
 
     return TradingCMDPEnv(
         features=features_df.values, prices=prices, tickers=config.data.tickers,

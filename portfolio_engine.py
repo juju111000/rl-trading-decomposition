@@ -94,7 +94,7 @@ class PortfolioEngine:
 
         # Rolling volatility for slippage calculation
         self._return_buffer: Dict[str, List[float]] = {t: [] for t in tickers}
-        self._vol_estimates: Dict[str, float] = {t: 0.02 for t in tickers}  # Default 2%
+        self._vol_estimates: Dict[str, float] = {t: 0.02 for t in tickers}  # Default 2% DAILY vol
 
     def reset(self) -> PortfolioState:
         """Reset portfolio to initial state."""
@@ -227,14 +227,20 @@ class PortfolioEngine:
             # Calculate transaction costs
             fee = abs(trade_dollars) * self.transaction_fee_rate
 
-            # Calculate slippage
-            if self.use_volatility_slippage and volatilities and ticker in volatilities:
-                vol = volatilities[ticker]
-            else:
-                vol = self._vol_estimates.get(ticker, 0.02)
-
+            # Calculate slippage. Audit defect #8: the volatility term uses
+            # DAILY-scale volatility (the 0.02 default is a 2% daily vol), and is
+            # applied only when use_volatility_slippage is set. Previously the
+            # running estimate was annualized (x sqrt(252), ~16x too large) and
+            # the term was charged even with use_volatility_slippage=False.
             base_slippage = abs(trade_dollars) * self.slippage_rate
-            vol_slippage = abs(trade_dollars) * vol * self.slippage_vol_multiplier
+            if self.use_volatility_slippage:
+                if volatilities and ticker in volatilities:
+                    vol = volatilities[ticker]  # caller-supplied: must be daily-scale
+                else:
+                    vol = self._vol_estimates.get(ticker, 0.02)
+                vol_slippage = abs(trade_dollars) * vol * self.slippage_vol_multiplier
+            else:
+                vol_slippage = 0.0
             slippage = base_slippage + vol_slippage
 
             # Execute trade
@@ -320,7 +326,8 @@ class PortfolioEngine:
                         self._return_buffer[ticker] = self._return_buffer[ticker][-20:]
 
                     if len(self._return_buffer[ticker]) >= 5:
-                        self._vol_estimates[ticker] = np.std(self._return_buffer[ticker]) * np.sqrt(252)
+                        # DAILY-scale (audit defect #8; previously x sqrt(252))
+                        self._vol_estimates[ticker] = float(np.std(self._return_buffer[ticker]))
 
         # Update peak NAV
         if new_nav > self._peak_nav:
